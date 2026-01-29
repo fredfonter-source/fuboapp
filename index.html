@@ -15,18 +15,17 @@
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=28">
+  <link rel="stylesheet" href="/assets/css/main.css?v=29">
   <style>
     html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
   <nav class="top-bar fixed-top">
-    <div class="container-fluid">
-      <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
-        <i class="fas fa-bars"></i>
+    <div class="container-fluid px-3 px-md-4">
+      <button class="btn btn-dark me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+        <i class="fas fa-bars fa-lg"></i>
       </button>
-      <!-- No brand name in top bar as requested -->
     </div>
   </nav>
 
@@ -41,7 +40,7 @@
         <li class="nav-item"><a class="nav-link" href="#">Download App</a></li>
       </ul>
       <div class="mt-auto mb-5 text-center">
-        <button id="themeToggle" class="btn btn-link" aria-label="Toggle theme" style="font-size: 2rem;">
+        <button id="themeToggle" class="btn btn-link" aria-label="Toggle theme" style="font-size: 2.2rem;">
           <i class="fas fa-moon"></i>
         </button>
       </div>
@@ -65,7 +64,7 @@
             <p class="price-unit">per month</p>
           </div>
           <p class="duration">1 Month Subscription</p>
-          <a href="#admin" class="btn btn-danger mt-3">Choose Plan</a>
+          <a href="#admin" class="btn btn-danger mt-auto">Choose Plan</a>
         </div>
 
         <div class="card plan">
@@ -75,7 +74,7 @@
             <p class="price-unit">3 Months</p>
           </div>
           <p class="duration">Save 13% ($7.00/month)</p>
-          <a href="#admin" class="btn btn-danger mt-3">Choose Plan</a>
+          <a href="#admin" class="btn btn-danger mt-auto">Choose Plan</a>
         </div>
 
         <div class="card plan position-relative">
@@ -86,11 +85,11 @@
             <p class="price-unit">12 Months</p>
           </div>
           <p class="duration">Save 48% ($4.17/month)</p>
-          <a href="#admin" class="btn btn-danger mt-3">Choose Plan</a>
+          <a href="#admin" class="btn btn-danger mt-auto">Choose Plan</a>
         </div>
       </div>
 
-      <h2 class="mt-5 mb-5 text-center display-6 fw-bold">Trusted Payments</h2>
+      <h2 class="mt-5 mb-5 text-center display-6 fw-bold">Secure Payment Methods</h2>
       <div class="payment-methods mb-5">
         <div class="card method">
           <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
@@ -174,7 +173,6 @@
           : '<i class="fas fa-sun"></i>';
       });
 
-      // Close offcanvas when clicking outside
       const offcanvas = document.getElementById('sidebarMenu');
       document.addEventListener('click', e => {
         const toggler = document.querySelector('[data-bs-toggle="offcanvas"]');
