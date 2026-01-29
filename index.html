@@ -15,11 +15,9 @@
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=27">
+  <link rel="stylesheet" href="/assets/css/main.css?v=28">
   <style>
     html { scroll-behavior: smooth; }
-    * { transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease; }
-    body { overflow-x: hidden; }
   </style>
 </head>
 <body>
@@ -28,7 +26,7 @@
       <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
         <i class="fas fa-bars"></i>
       </button>
-      <!-- Removed brand name from top bar -->
+      <!-- No brand name in top bar as requested -->
     </div>
   </nav>
 
@@ -37,13 +35,13 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column justify-content-between">
-      <ul class="nav flex-column mt-4">
+      <ul class="nav flex-column mt-5">
         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#">FAC</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Download App</a></li>
       </ul>
-      <div class="mt-auto mb-4">
-        <button id="themeToggle" class="nav-link btn btn-link w-100 text-center" aria-label="Toggle theme" style="font-size: 1.8rem;">
+      <div class="mt-auto mb-5 text-center">
+        <button id="themeToggle" class="btn btn-link" aria-label="Toggle theme" style="font-size: 2rem;">
           <i class="fas fa-moon"></i>
         </button>
       </div>
@@ -53,49 +51,58 @@
   <div class="container-fluid main-content">
     <div class="container">
       <section class="hero-section py-5 text-center text-lg-start">
-        <div class="container">
-          <h1 class="display-3 fw-bold">Premium Live Sports</h1>
-          <p class="lead">HD • 4K • Zero buffering • PPV + major leagues • Multi-audio</p>
-          <a href="#pricing" class="btn btn-danger btn-lg mt-4 px-5 py-3">Get VIP Access</a>
-        </div>
+        <h1 class="display-3 fw-bold">Premium Live Sports</h1>
+        <p class="lead">HD • 4K • Zero buffering • PPV + major leagues • Multi-audio</p>
+        <a href="#pricing" class="btn btn-danger btn-lg mt-4 px-5 py-3">Get VIP Access</a>
       </section>
 
-      <h2 id="pricing" class="mt-5 mb-5 text-center display-4 fw-bold">Choose Your Plan</h2>
-      <div class="event-grid pricing-plans mb-5">
-        <div class="card plan classic-card">
+      <h2 id="pricing" class="mt-5 mb-5 text-center display-5 fw-bold">Choose Your Plan</h2>
+      <div class="pricing-plans mb-5">
+        <div class="card plan">
           <h3 class="card-title">Silver Package</h3>
-          <p class="price">$8.00 <span>per month</span></p>
+          <div class="price-block">
+            <p class="price">$8.00</p>
+            <p class="price-unit">per month</p>
+          </div>
           <p class="duration">1 Month Subscription</p>
-          <a href="#admin" class="btn btn-danger">Choose Plan</a>
+          <a href="#admin" class="btn btn-danger mt-3">Choose Plan</a>
         </div>
-        <div class="card plan classic-card">
+
+        <div class="card plan">
           <h3 class="card-title">Golden Package</h3>
-          <p class="price">$21.00 <span>3 Months</span></p>
+          <div class="price-block">
+            <p class="price">$21.00</p>
+            <p class="price-unit">3 Months</p>
+          </div>
           <p class="duration">Save 13% ($7.00/month)</p>
-          <a href="#admin" class="btn btn-danger">Choose Plan</a>
+          <a href="#admin" class="btn btn-danger mt-3">Choose Plan</a>
         </div>
-        <div class="card plan classic-card position-relative">
-          <span class="live-badge" style="background: #ff4d4d;">MOST POPULAR</span>
+
+        <div class="card plan position-relative">
+          <span class="live-badge">MOST POPULAR</span>
           <h3 class="card-title">VIP Package</h3>
-          <p class="price">$50.00 <span>12 Months</span></p>
+          <div class="price-block">
+            <p class="price">$50.00</p>
+            <p class="price-unit">12 Months</p>
+          </div>
           <p class="duration">Save 48% ($4.17/month)</p>
-          <a href="#admin" class="btn btn-danger">Choose Plan</a>
+          <a href="#admin" class="btn btn-danger mt-3">Choose Plan</a>
         </div>
       </div>
 
-      <h2 class="mt-5 mb-5 text-center display-5 fw-bold">Trusted Payments</h2>
-      <div class="event-grid payment-methods mb-5 d-flex justify-content-center flex-wrap gap-5">
-        <div class="card method text-center p-4 shadow-hover">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height: 70px;">
-          <p class="mt-3 mb-0 fw-medium">PayPal</p>
+      <h2 class="mt-5 mb-5 text-center display-6 fw-bold">Trusted Payments</h2>
+      <div class="payment-methods mb-5">
+        <div class="card method">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+          <p>PayPal</p>
         </div>
-        <div class="card method text-center p-4 shadow-hover">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" style="height: 70px;">
-          <p class="mt-3 mb-0 fw-medium">Credit/Debit</p>
+        <div class="card method">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+          <p>Credit/Debit</p>
         </div>
-        <div class="card method text-center p-4 shadow-hover">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" style="height: 70px;">
-          <p class="mt-3 mb-0 fw-medium">Crypto</p>
+        <div class="card method">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin">
+          <p>Crypto</p>
         </div>
       </div>
 
@@ -132,7 +139,7 @@
           <i class="fab fa-telegram-plane fa-5x mb-4" style="color: #0088cc;"></i>
           <h3 class="card-title mb-4">Get Your Account Now</h3>
           <p class="lead mb-4 text-secondary">Contact admin for instant setup & payment</p>
-          <a href="https://t.me/iniccur1" class="btn btn-danger btn-lg d-inline-flex align-items-center gap-3 px-5 py-3 shadow-hover" target="_blank">
+          <a href="https://t.me/iniccur1" class="btn btn-danger btn-lg d-inline-flex align-items-center gap-3 px-5 py-3" target="_blank">
             <i class="fab fa-telegram fa-2x"></i>
             <span>Message on Telegram</span>
           </a>
@@ -152,14 +159,19 @@
       const html = document.documentElement;
       const toggle = document.getElementById('themeToggle');
       let theme = localStorage.getItem('theme') || 'dark';
+      
       html.setAttribute('data-bs-theme', theme);
-      toggle.innerHTML = theme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+      toggle.innerHTML = theme === 'dark' 
+        ? '<i class="fas fa-moon"></i>' 
+        : '<i class="fas fa-sun"></i>';
 
       toggle.addEventListener('click', () => {
         theme = theme === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-bs-theme', theme);
         localStorage.setItem('theme', theme);
-        toggle.innerHTML = theme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        toggle.innerHTML = theme === 'dark' 
+          ? '<i class="fas fa-moon"></i>' 
+          : '<i class="fas fa-sun"></i>';
       });
 
       // Close offcanvas when clicking outside
@@ -169,7 +181,7 @@
         if (offcanvas.classList.contains('show') && 
             !offcanvas.contains(e.target) && 
             !toggler.contains(e.target)) {
-          bootstrap.Offcanvas.getInstance(offcanvas).hide();
+          bootstrap.Offcanvas.getInstance(offcanvas)?.hide();
         }
       });
     }
@@ -177,4 +189,4 @@
     document.addEventListener('DOMContentLoaded', initPage);
   </script>
 </body>
-  </html>
+</html>
