@@ -1,0 +1,145 @@
+/* ==========================================
+   General & Dark Mode Base
+========================================== */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: #1a1a1a;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent: #ff2d55;       /* vibrant red for sports energy */
+  --accent-hover: #ff4d6a;
+  --border: #2a2a2a;
+}
+
+[data-bs-theme="dark"] {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  background-color: var(--bg-primary);
+  font-family: 'Kanit', sans-serif;
+  color: var(--text-primary);
+}
+
+/* Top bar / Navbar */
+.top-bar {
+  background: linear-gradient(to bottom, #111111, #0a0a0a);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.futbolx-brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255,45,85,0.15);
+}
+
+/* Pricing plans */
+.pricing-plans .plan {
+  position: relative;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.pricing-plans .price {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin: 1rem 0;
+}
+
+.pricing-plans .duration {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Most popular badge */
+.live-badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: var(--accent);
+  color: white;
+  padding: 0.35rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255,45,85,0.4);
+}
+
+/* Buttons */
+.btn-danger {
+  background: var(--accent);
+  border: none;
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+
+.btn-danger:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* Payment methods */
+.payment-methods .method {
+  text-align: center;
+  padding: 2rem 1rem;
+  transition: all 0.3s;
+}
+
+.payment-methods .method img {
+  height: 60px;
+  margin-bottom: 1rem;
+  filter: brightness(1.1) contrast(1.1);
+  transition: transform 0.3s;
+}
+
+.payment-methods .method:hover img {
+  transform: scale(1.15);
+}
+
+/* Hero section text emphasis */
+.hero-section h1 {
+  font-size: 3.8rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #ff2d55, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Telegram button */
+.telegram-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  padding: 1.2rem 2.5rem;
+}
+
+/* Footer */
+footer {
+  background: #0a0a0a;
+  border-top: 1px solid var(--border);
+    }
