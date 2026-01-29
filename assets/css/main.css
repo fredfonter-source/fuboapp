@@ -1,3 +1,8 @@
+/* ==========================================
+   FuboStreams VIP Landing - Main CSS v30
+   Updated: Cooler sidebar, premium cards, blended navbar
+========================================== */
+
 :root {
   --bg-primary:    #0b0e11;
   --bg-secondary:  #12151a;
@@ -14,6 +19,7 @@
   --shadow-glow:   0 16px 48px rgba(255, 51, 102, 0.18);
 }
 
+/* Light mode support */
 [data-bs-theme="light"] {
   --bg-primary:    #f8f9fa;
   --bg-secondary:  #ffffff;
@@ -29,12 +35,22 @@
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Kanit', system-ui, sans-serif;
   line-height: 1.6;
   margin: 0;
   overflow-x: hidden;
 }
 
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  transition: var(--transition);
+}
+
+/* Top bar – blended, solid feel */
 .top-bar {
   background: linear-gradient(to bottom, rgba(11,14,17,0.94), rgba(11,14,17,0.88));
   backdrop-filter: blur(12px);
@@ -50,31 +66,71 @@ body {
   align-items: center;
 }
 
+/* Sidebar – premium & cool look */
 .offcanvas {
-  background: var(--bg-secondary);
-  border-right: 1px solid var(--border);
-  width: clamp(280px, 75vw, 340px) !important;
+  background: linear-gradient(to bottom, #0f1318, #0b0e11);
+  border-right: none;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.6);
+  width: clamp(300px, 80vw, 360px) !important;
 }
 
-.offcanvas-body .nav-link {
-  padding: 1.2rem 1.8rem;
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  border-radius: 0.8rem;
-  margin: 0.5rem 1rem;
+.offcanvas-body {
+  padding: 0;
+  background: transparent;
 }
 
-.offcanvas-body .nav-link:hover {
-  background: rgba(255,51,102,0.1);
-  color: white;
-  transform: translateX(8px);
+.nav-link {
+  color: #c0c4cc !important;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin: 0.4rem 1rem;
+  padding: 1.4rem 1.6rem !important;
 }
 
+.nav-link:hover,
+.nav-link:focus {
+  color: white !important;
+  background: rgba(255, 51, 102, 0.12);
+  transform: translateX(10px);
+  box-shadow: 0 4px 20px rgba(255,51,102,0.15);
+}
+
+.nav-link i {
+  color: var(--accent);
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  min-width: 32px;
+}
+
+.nav-link:hover i {
+  transform: scale(1.15);
+}
+
+/* Theme toggle in sidebar */
 #themeToggle {
-  font-size: 2.2rem;
-  padding: 1rem !important;
+  border-radius: 16px;
+  background: rgba(255,51,102,0.08);
+  transition: all 0.4s ease;
+  margin: 0 1rem 2rem;
+  padding: 1.5rem !important;
+  width: calc(100% - 2rem);
 }
 
+#themeToggle:hover {
+  background: rgba(255,51,102,0.18);
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(255,51,102,0.2);
+}
+
+#themeToggle i {
+  color: var(--accent);
+}
+
+/* Main content spacing */
 .main-content {
   padding: clamp(4rem, 8vw, 7rem) 0 4rem;
 }
@@ -84,6 +140,23 @@ body {
   padding: 0 clamp(1.5rem, 5vw, 3rem);
 }
 
+/* Cards – premium elevated look */
+.card {
+  background: var(--bg-card);
+  border: 1px solid rgba(42,51,64,0.6);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-glow);
+  border-color: rgba(255,51,102,0.3);
+}
+
+/* Pricing plans */
 .pricing-plans {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -98,17 +171,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   min-height: 420px;
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  border: 1px solid rgba(42,51,64,0.6);
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-}
-
-.plan:hover {
-  transform: translateY(-12px);
-  box-shadow: var(--shadow-glow);
-  border-color: rgba(255,51,102,0.3);
 }
 
 .plan .card-title {
@@ -158,6 +220,7 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* Buttons */
 .btn-danger {
   background: var(--accent);
   border: none;
@@ -174,6 +237,7 @@ body {
   box-shadow: var(--shadow-glow);
 }
 
+/* Payment methods */
 .payment-methods {
   display: flex;
   justify-content: center;
@@ -200,26 +264,13 @@ body {
   filter: brightness(1.05);
 }
 
-.payment-methods .method p {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin: 0;
-}
-
 .payment-methods .method:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-glow);
   border-color: rgba(255,51,102,0.4);
 }
 
-.card {
-  background: var(--bg-card);
-  border: 1px solid rgba(42,51,64,0.6);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-}
-
+/* Hero */
 .hero-section h1 {
   font-size: clamp(3rem, 10vw, 5.8rem);
   font-weight: 900;
@@ -228,8 +279,26 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* Footer */
 footer {
   border-top: 1px solid var(--border);
   padding: 3rem 0 2rem;
   text-align: center;
 }
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .nav-link {
+    font-size: 1.35rem;
+    padding: 1.6rem 1.8rem !important;
+  }
+  
+  .payment-methods .method {
+    width: 160px;
+    padding: 2rem 1.2rem;
+  }
+  
+  .payment-methods .method img {
+    height: 75px;
+  }
+  }
