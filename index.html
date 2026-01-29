@@ -16,17 +16,17 @@
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=34">
+  <link rel="stylesheet" href="/assets/css/main.css?v=35">
   <style>
     html { scroll-behavior: smooth; }
 
-    /* Tight hero container for heading only */
+    /* Hero heading with contained slideshow – full width on mobile */
     .hero-heading-section {
       position: relative;
-      padding: 5rem 1rem 2rem;
+      padding: 5rem 0 2.5rem;
       text-align: center;
       overflow: hidden;
-      min-height: 40vh;
+      min-height: 35vh; /* tighter height to focus only on heading */
     }
 
     .hero-heading-bg {
@@ -40,20 +40,31 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;              /* keeps aspect ratio, no stretch */
+      object-fit: cover;               /* default: cover to fill */
       object-position: center;
       opacity: 0;
       transition: opacity 1.8s ease-in-out;
     }
 
     .hero-heading-bg img.active {
-      opacity: 0.85;                  /* slightly transparent so text pops */
+      opacity: 0.82;
+    }
+
+    /* Mobile: full edge-to-edge without side crop */
+    @media (max-width: 767px) {
+      .hero-heading-bg img {
+        object-fit: cover;
+        object-position: center;
+        width: 100vw;                   /* force full viewport width */
+        left: 50%;
+        transform: translateX(-50%);    /* center it perfectly */
+      }
     }
 
     .hero-heading-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(11,14,17,0.78); /* strong dark overlay for contrast */
+      background: rgba(11,14,17,0.82);
       z-index: -1;
     }
 
@@ -69,7 +80,7 @@
 
     /* Light theme fix */
     [data-bs-theme="light"] .hero-heading-overlay {
-      background: rgba(0,0,0,0.68);
+      background: rgba(0,0,0,0.72);
     }
 
     [data-bs-theme="light"] .hero-heading-content h1 {
@@ -77,10 +88,15 @@
       text-shadow: 0 5px 15px rgba(0,0,0,0.8);
     }
 
-    /* Rest of hero (lead text + button) stays normal, no bg image */
+    /* Main hero content below heading (no bg image) */
     .hero-main-content {
       padding: 1rem 1rem 6rem;
       text-align: center;
+    }
+
+    .hero-main-content .lead {
+      font-size: clamp(1.35rem, 5vw, 1.9rem);
+      margin-bottom: 2rem;
     }
   </style>
 </head>
@@ -126,7 +142,7 @@
 
   <div class="container-fluid main-content">
     <div class="container">
-      <!-- Hero heading with contained slideshow background -->
+      <!-- Hero heading section – slideshow only here -->
       <section class="hero-heading-section">
         <div class="hero-heading-bg">
           <img src="https://deadline.com/wp-content/uploads/2021/01/fuboTV-_Platform-Image_Oct-2020.jpg" alt="Entertainment interface" class="active">
@@ -139,7 +155,7 @@
         </div>
       </section>
 
-      <!-- Main hero content (lead + button) - no background image here -->
+      <!-- Lead text + button – no background -->
       <section class="hero-main-content py-4">
         <p class="lead">
           Movies & series with up-to-date subtitles • Live TV channels • PPV sports (UFC, F1, NFL, NHL, motor racing) • HD & FHD quality • Android phones & Android TVs
@@ -278,7 +294,7 @@
         }
       });
 
-      // Contained hero heading slideshow
+      // Hero heading slideshow
       const slides = document.querySelectorAll('.hero-heading-bg img');
       let current = 0;
 
