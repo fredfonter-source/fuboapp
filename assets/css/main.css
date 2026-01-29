@@ -1,6 +1,6 @@
 /* ==========================================
-   FuboStreams VIP Landing - Main CSS v30
-   Updated: Cooler sidebar, premium cards, blended navbar
+   FuboStreams VIP Landing - Main CSS v31
+   Fixes: Sidebar width reduced, full theme support including sidebar
 ========================================== */
 
 :root {
@@ -19,7 +19,7 @@
   --shadow-glow:   0 16px 48px rgba(255, 51, 102, 0.18);
 }
 
-/* Light mode support */
+/* Light mode – now includes sidebar/offcanvas */
 [data-bs-theme="light"] {
   --bg-primary:    #f8f9fa;
   --bg-secondary:  #ffffff;
@@ -30,6 +30,15 @@
   --accent:        #dc3545;
   --accent-hover:  #c82333;
   --accent-glow:   rgba(220, 53, 69, 0.15);
+  --sidebar-bg:    #ffffff;
+  --sidebar-text:  #212529;
+  --sidebar-hover: rgba(220, 53, 69, 0.08);
+}
+
+[data-bs-theme="dark"] {
+  --sidebar-bg:    linear-gradient(to bottom, #0f1318, #0b0e11);
+  --sidebar-text:  #c0c4cc;
+  --sidebar-hover: rgba(255, 51, 102, 0.12);
 }
 
 body {
@@ -41,16 +50,10 @@ body {
   overflow-x: hidden;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
+* { transition: var(--transition); }
 
-* {
-  transition: var(--transition);
-}
-
-/* Top bar – blended, solid feel */
+/* Top bar */
 .top-bar {
   background: linear-gradient(to bottom, rgba(11,14,17,0.94), rgba(11,14,17,0.88));
   backdrop-filter: blur(12px);
@@ -66,12 +69,12 @@ html {
   align-items: center;
 }
 
-/* Sidebar – premium & cool look */
+/* Sidebar – narrower + full theme support */
 .offcanvas {
-  background: linear-gradient(to bottom, #0f1318, #0b0e11);
+  background: var(--sidebar-bg);
   border-right: none;
   box-shadow: -10px 0 30px rgba(0,0,0,0.6);
-  width: clamp(300px, 80vw, 360px) !important;
+  width: clamp(260px, 70vw, 320px) !important; /* reduced width */
 }
 
 .offcanvas-body {
@@ -80,30 +83,28 @@ html {
 }
 
 .nav-link {
-  color: #c0c4cc !important;
-  font-size: 1.25rem;
+  color: var(--sidebar-text) !important;
+  font-size: 1.22rem;
   font-weight: 500;
   border-radius: 12px;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
   margin: 0.4rem 1rem;
-  padding: 1.4rem 1.6rem !important;
+  padding: 1.2rem 1.6rem !important;
 }
 
 .nav-link:hover,
 .nav-link:focus {
   color: white !important;
-  background: rgba(255, 51, 102, 0.12);
-  transform: translateX(10px);
-  box-shadow: 0 4px 20px rgba(255,51,102,0.15);
+  background: var(--sidebar-hover);
+  transform: translateX(8px);
+  box-shadow: 0 4px 20px rgba(255,51,102,0.12);
 }
 
 .nav-link i {
   color: var(--accent);
-  font-size: 1.5rem;
-  transition: transform 0.3s ease;
+  font-size: 1.4rem;
   min-width: 32px;
+  transition: transform 0.3s ease;
 }
 
 .nav-link:hover i {
@@ -116,21 +117,18 @@ html {
   background: rgba(255,51,102,0.08);
   transition: all 0.4s ease;
   margin: 0 1rem 2rem;
-  padding: 1.5rem !important;
+  padding: 1.4rem !important;
   width: calc(100% - 2rem);
+  color: var(--accent) !important;
 }
 
 #themeToggle:hover {
   background: rgba(255,51,102,0.18);
   transform: scale(1.08);
-  box-shadow: 0 8px 24px rgba(255,51,102,0.2);
+  box-shadow: 0 8px 24px var(--accent-glow);
 }
 
-#themeToggle i {
-  color: var(--accent);
-}
-
-/* Main content spacing */
+/* Main content */
 .main-content {
   padding: clamp(4rem, 8vw, 7rem) 0 4rem;
 }
@@ -140,14 +138,13 @@ html {
   padding: 0 clamp(1.5rem, 5vw, 3rem);
 }
 
-/* Cards – premium elevated look */
+/* Cards */
 .card {
   background: var(--bg-card);
   border: 1px solid rgba(42,51,64,0.6);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
-  overflow: hidden;
 }
 
 .card:hover {
@@ -156,7 +153,7 @@ html {
   border-color: rgba(255,51,102,0.3);
 }
 
-/* Pricing plans */
+/* Pricing */
 .pricing-plans {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -216,8 +213,6 @@ html {
   font-weight: 700;
   font-size: 1.05rem;
   box-shadow: 0 8px 24px var(--accent-glow);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 /* Buttons */
@@ -228,7 +223,6 @@ html {
   padding: 1rem 2.6rem;
   font-size: 1.2rem;
   font-weight: 600;
-  transition: var(--transition);
 }
 
 .btn-danger:hover {
@@ -261,16 +255,14 @@ html {
   width: auto;
   margin-bottom: 1.4rem;
   object-fit: contain;
-  filter: brightness(1.05);
 }
 
 .payment-methods .method:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-glow);
-  border-color: rgba(255,51,102,0.4);
 }
 
-/* Hero */
+/* Hero & Footer */
 .hero-section h1 {
   font-size: clamp(3rem, 10vw, 5.8rem);
   font-weight: 900;
@@ -279,18 +271,17 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
-/* Footer */
 footer {
   border-top: 1px solid var(--border);
   padding: 3rem 0 2rem;
   text-align: center;
 }
 
-/* Responsive tweaks */
+/* Mobile tweaks */
 @media (max-width: 576px) {
   .nav-link {
-    font-size: 1.35rem;
-    padding: 1.6rem 1.8rem !important;
+    font-size: 1.3rem;
+    padding: 1.4rem 1.8rem !important;
   }
   
   .payment-methods .method {
@@ -301,4 +292,4 @@ footer {
   .payment-methods .method img {
     height: 75px;
   }
-  }
+   }
