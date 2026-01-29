@@ -16,81 +16,71 @@
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=33">
+  <link rel="stylesheet" href="/assets/css/main.css?v=34">
   <style>
     html { scroll-behavior: smooth; }
 
-    /* Hero section with contained background slideshow */
-    .hero-section {
+    /* Tight hero container for heading only */
+    .hero-heading-section {
       position: relative;
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      padding: 6rem 0 8rem;
+      padding: 5rem 1rem 2rem;
+      text-align: center;
       overflow: hidden;
+      min-height: 40vh;
     }
 
-    .hero-bg-slideshow {
+    .hero-heading-bg {
       position: absolute;
       inset: 0;
-      z-index: -2;
+      z-index: -1;
     }
 
-    .hero-bg-slideshow img {
+    .hero-heading-bg img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover;              /* keeps aspect ratio, no stretch */
+      object-position: center;
       opacity: 0;
       transition: opacity 1.8s ease-in-out;
     }
 
-    .hero-bg-slideshow img.active {
-      opacity: 1;
+    .hero-heading-bg img.active {
+      opacity: 0.85;                  /* slightly transparent so text pops */
     }
 
-    .hero-overlay {
+    .hero-heading-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(11,14,17,0.75), rgba(11,14,17,0.85));
+      background: rgba(11,14,17,0.78); /* strong dark overlay for contrast */
       z-index: -1;
     }
 
-    .hero-content {
+    .hero-heading-content h1 {
+      font-size: clamp(3.2rem, 11vw, 6rem);
+      font-weight: 900;
+      text-shadow: 0 6px 20px rgba(0,0,0,0.9);
+      margin-bottom: 0.5rem;
+      line-height: 1.05;
       position: relative;
       z-index: 1;
-      text-align: center;
-      max-width: 1100px;
-      margin: 0 auto;
     }
 
-    .hero-content h1 {
-      font-size: clamp(3rem, 10vw, 5.5rem);
-      font-weight: 900;
-      text-shadow: 0 6px 16px rgba(0,0,0,0.9);
-      margin-bottom: 1.8rem;
-      line-height: 1.1;
+    /* Light theme fix */
+    [data-bs-theme="light"] .hero-heading-overlay {
+      background: rgba(0,0,0,0.68);
     }
 
-    .hero-content .lead {
-      font-size: clamp(1.35rem, 5vw, 1.9rem);
-      text-shadow: 0 3px 10px rgba(0,0,0,0.8);
-      margin-bottom: 2.5rem;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Light theme readability */
-    [data-bs-theme="light"] .hero-overlay {
-      background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.8));
-    }
-
-    [data-bs-theme="light"] .hero-content h1,
-    [data-bs-theme="light"] .hero-content .lead {
-      text-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    [data-bs-theme="light"] .hero-heading-content h1 {
       color: #ffffff !important;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+    }
+
+    /* Rest of hero (lead text + button) stays normal, no bg image */
+    .hero-main-content {
+      padding: 1rem 1rem 6rem;
+      text-align: center;
     }
   </style>
 </head>
@@ -136,20 +126,25 @@
 
   <div class="container-fluid main-content">
     <div class="container">
-      <section class="hero-section">
-        <div class="hero-bg-slideshow">
+      <!-- Hero heading with contained slideshow background -->
+      <section class="hero-heading-section">
+        <div class="hero-heading-bg">
           <img src="https://deadline.com/wp-content/uploads/2021/01/fuboTV-_Platform-Image_Oct-2020.jpg" alt="Entertainment interface" class="active">
           <img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/20051474/fubo.jpg?quality=90&strip=all&crop=0,0,100,100" alt="Streaming experience">
         </div>
-        <div class="hero-overlay"></div>
+        <div class="hero-heading-overlay"></div>
 
-        <div class="hero-content">
+        <div class="hero-heading-content">
           <h1 class="display-3 fw-bold">Unlimited Entertainment on Android</h1>
-          <p class="lead">
-            Movies & series with up-to-date subtitles • Live TV channels • PPV sports (UFC, F1, NFL, NHL, motor racing) • HD & FHD quality • Android phones & Android TVs
-          </p>
-          <a href="#pricing" class="btn btn-danger btn-lg mt-4 px-5 py-3">Get Premium Access</a>
         </div>
+      </section>
+
+      <!-- Main hero content (lead + button) - no background image here -->
+      <section class="hero-main-content py-4">
+        <p class="lead">
+          Movies & series with up-to-date subtitles • Live TV channels • PPV sports (UFC, F1, NFL, NHL, motor racing) • HD & FHD quality • Android phones & Android TVs
+        </p>
+        <a href="#pricing" class="btn btn-danger btn-lg mt-3 px-5 py-3">Get Premium Access</a>
       </section>
 
       <h2 id="pricing" class="mt-5 mb-5 text-center display-5 fw-bold">Choose Your Subscription Plan</h2>
@@ -283,8 +278,8 @@
         }
       });
 
-      // Hero slideshow – contained within hero section
-      const slides = document.querySelectorAll('.hero-bg-slideshow img');
+      // Contained hero heading slideshow
+      const slides = document.querySelectorAll('.hero-heading-bg img');
       let current = 0;
 
       function nextSlide() {
@@ -294,11 +289,11 @@
       }
 
       if (slides.length > 1) {
-        setInterval(nextSlide, 6000); // smooth fade every 6 seconds
+        setInterval(nextSlide, 6000);
       }
     }
 
     document.addEventListener('DOMContentLoaded', initPage);
   </script>
 </body>
-  </html>
+</html>
