@@ -16,69 +16,81 @@
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=32">
+  <link rel="stylesheet" href="/assets/css/main.css?v=33">
   <style>
     html { scroll-behavior: smooth; }
 
-    /* Hero slideshow */
-    .hero-slideshow {
-      position: absolute;
-      inset: 0;
+    /* Hero section with contained background slideshow */
+    .hero-section {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 0 8rem;
       overflow: hidden;
-      z-index: -1;
     }
 
-    .hero-slideshow img {
+    .hero-bg-slideshow {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-bg-slideshow img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 1.5s ease-in-out;
+      transition: opacity 1.8s ease-in-out;
     }
 
-    .hero-slideshow img.active {
+    .hero-bg-slideshow img.active {
       opacity: 1;
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.75));
+      background: linear-gradient(to bottom, rgba(11,14,17,0.75), rgba(11,14,17,0.85));
       z-index: -1;
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      padding: 6rem 1rem 8rem;
       text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     .hero-content h1 {
-      font-size: clamp(2.8rem, 9vw, 5rem);
+      font-size: clamp(3rem, 10vw, 5.5rem);
       font-weight: 900;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.8);
-      margin-bottom: 1.5rem;
+      text-shadow: 0 6px 16px rgba(0,0,0,0.9);
+      margin-bottom: 1.8rem;
+      line-height: 1.1;
     }
 
     .hero-content .lead {
-      font-size: clamp(1.3rem, 4.5vw, 1.8rem);
-      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-      max-width: 900px;
-      margin: 0 auto 2.5rem;
+      font-size: clamp(1.35rem, 5vw, 1.9rem);
+      text-shadow: 0 3px 10px rgba(0,0,0,0.8);
+      margin-bottom: 2.5rem;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* Light theme adjustments for readability */
+    /* Light theme readability */
     [data-bs-theme="light"] .hero-overlay {
-      background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.7));
+      background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.8));
     }
 
     [data-bs-theme="light"] .hero-content h1,
     [data-bs-theme="light"] .hero-content .lead {
-      text-shadow: 0 3px 10px rgba(0,0,0,0.6);
-      color: #fff !important;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.7);
+      color: #ffffff !important;
     }
   </style>
 </head>
@@ -122,18 +134,22 @@
     </div>
   </div>
 
-  <div class="container-fluid main-content position-relative">
-    <div class="hero-slideshow">
-      <img src="https://deadline.com/wp-content/uploads/2021/01/fuboTV-_Platform-Image_Oct-2020.jpg" alt="FuboStreams Interface 1" class="active">
-      <img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/20051474/fubo.jpg?quality=90&strip=all&crop=0,0,100,100" alt="FuboStreams Interface 2">
-    </div>
-    <div class="hero-overlay"></div>
-
+  <div class="container-fluid main-content">
     <div class="container">
-      <section class="hero-content py-5 text-center text-lg-start">
-        <h1 class="display-3 fw-bold">Unlimited Entertainment on Android</h1>
-        <p class="lead">Movies & series with up-to-date subtitles • Live TV channels • PPV sports (UFC, F1, NFL, NHL, motor racing) • HD & FHD quality • Android phones & Android TVs</p>
-        <a href="#pricing" class="btn btn-danger btn-lg mt-4 px-5 py-3">Get Premium Access</a>
+      <section class="hero-section">
+        <div class="hero-bg-slideshow">
+          <img src="https://deadline.com/wp-content/uploads/2021/01/fuboTV-_Platform-Image_Oct-2020.jpg" alt="Entertainment interface" class="active">
+          <img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/20051474/fubo.jpg?quality=90&strip=all&crop=0,0,100,100" alt="Streaming experience">
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+          <h1 class="display-3 fw-bold">Unlimited Entertainment on Android</h1>
+          <p class="lead">
+            Movies & series with up-to-date subtitles • Live TV channels • PPV sports (UFC, F1, NFL, NHL, motor racing) • HD & FHD quality • Android phones & Android TVs
+          </p>
+          <a href="#pricing" class="btn btn-danger btn-lg mt-4 px-5 py-3">Get Premium Access</a>
+        </div>
       </section>
 
       <h2 id="pricing" class="mt-5 mb-5 text-center display-5 fw-bold">Choose Your Subscription Plan</h2>
@@ -267,8 +283,8 @@
         }
       });
 
-      // Hero slideshow
-      const slides = document.querySelectorAll('.hero-slideshow img');
+      // Hero slideshow – contained within hero section
+      const slides = document.querySelectorAll('.hero-bg-slideshow img');
       let current = 0;
 
       function nextSlide() {
@@ -277,10 +293,12 @@
         slides[current].classList.add('active');
       }
 
-      setInterval(nextSlide, 6000); // Change every 6 seconds
+      if (slides.length > 1) {
+        setInterval(nextSlide, 6000); // smooth fade every 6 seconds
+      }
     }
 
     document.addEventListener('DOMContentLoaded', initPage);
   </script>
 </body>
-</html>
+  </html>
