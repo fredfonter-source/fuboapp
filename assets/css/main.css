@@ -1,8 +1,3 @@
-/* ==========================================
-   FuboStreams VIP Landing - Fixed & Improved CSS
-========================================== */
-
-/* Root Variables */
 :root {
   --bg-primary:    #0b0e11;
   --bg-secondary:  #12151a;
@@ -11,16 +6,14 @@
   --text-secondary:#9ca3af;
   --accent:        #ff3366;
   --accent-hover:  #ff4d7a;
-  --accent-glow:   rgba(255, 51, 102, 0.18);
+  --accent-glow:   rgba(255, 51, 102, 0.15);
   --border:        #2a3340;
-  --radius:        1.25rem;
-  --transition:    all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-  --shadow-sm:     0 6px 20px rgba(0,0,0,0.35);
-  --shadow-md:     0 16px 40px rgba(0,0,0,0.45);
-  --shadow-glow:   0 20px 40px rgba(255, 51, 102, 0.2);
+  --radius:        1.4rem;
+  --transition:    all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-sm:     0 8px 24px rgba(0,0,0,0.4);
+  --shadow-glow:   0 16px 48px rgba(255, 51, 102, 0.18);
 }
 
-/* Light mode support */
 [data-bs-theme="light"] {
   --bg-primary:    #f8f9fa;
   --bg-secondary:  #ffffff;
@@ -30,40 +23,33 @@
   --border:        #dee2e6;
   --accent:        #dc3545;
   --accent-hover:  #c82333;
+  --accent-glow:   rgba(220, 53, 69, 0.15);
 }
 
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Kanit', system-ui, sans-serif;
+  font-family: 'Kanit', sans-serif;
   line-height: 1.6;
-  min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
 }
 
-/* Smooth everything */
-html { scroll-behavior: smooth; }
-* { transition: var(--transition); }
-
-/* Top bar – fixed, cool look with shadow & gradient */
 .top-bar {
-  background: linear-gradient(180deg, #0f1318 0%, #0b0e11 100%);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  background: linear-gradient(to bottom, rgba(11,14,17,0.94), rgba(11,14,17,0.88));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(42,51,64,0.5);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+  padding: 0.9rem 0;
   z-index: 1030;
-  padding: 0.75rem 0;
 }
 
 .top-bar .container-fluid {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
 }
 
-/* Sidebar improvements */
 .offcanvas {
   background: var(--bg-secondary);
   border-right: 1px solid var(--border);
@@ -71,33 +57,26 @@ html { scroll-behavior: smooth; }
 }
 
 .offcanvas-body .nav-link {
-  padding: 1.1rem 1.6rem;
-  font-size: 1.18rem;
+  padding: 1.2rem 1.8rem;
+  font-size: 1.2rem;
   color: var(--text-secondary);
   border-radius: 0.8rem;
-  margin: 0.5rem 0.8rem;
+  margin: 0.5rem 1rem;
 }
 
 .offcanvas-body .nav-link:hover {
   background: rgba(255,51,102,0.1);
   color: white;
-  transform: translateX(6px);
+  transform: translateX(8px);
 }
 
 #themeToggle {
-  font-size: 1.9rem;
-  padding: 1.3rem !important;
-  border-radius: 1rem;
+  font-size: 2.2rem;
+  padding: 1rem !important;
 }
 
-#themeToggle:hover {
-  background: rgba(255,51,102,0.12);
-  transform: scale(1.12);
-}
-
-/* Main content */
 .main-content {
-  padding: clamp(3rem, 8vw, 6rem) 0 4rem;
+  padding: clamp(4rem, 8vw, 7rem) 0 4rem;
 }
 
 .container {
@@ -105,7 +84,6 @@ html { scroll-behavior: smooth; }
   padding: 0 clamp(1.5rem, 5vw, 3rem);
 }
 
-/* Pricing cards – fix spacing & mobile overlap */
 .pricing-plans {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -114,37 +92,88 @@ html { scroll-behavior: smooth; }
 }
 
 .plan {
-  padding: 2.5rem 1.8rem;
+  padding: 2.8rem 2rem;
   text-align: center;
-  min-height: 380px;           /* consistent height */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 420px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 1px solid rgba(42,51,64,0.6);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.plan:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-glow);
+  border-color: rgba(255,51,102,0.3);
 }
 
 .plan .card-title {
-  font-size: 1.9rem;
+  font-size: 2rem;
   margin-bottom: 1.8rem;
+  font-weight: 700;
+}
+
+.price-block {
+  margin: 1.8rem 0 1.2rem;
 }
 
 .price {
-  font-size: clamp(3rem, 10vw, 4.8rem);
+  font-size: clamp(3.5rem, 12vw, 5.2rem);
   font-weight: 900;
   color: var(--accent);
-  margin: 0.5rem 0 0.8rem;     /* more space below price */
+  line-height: 0.95;
+  margin: 0;
+}
+
+.price-unit {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin: 0.4rem 0 0;
   line-height: 1;
 }
 
-.duration,
-.plan .price + p {                 /* targets save text */
+.duration {
   color: var(--text-secondary);
-  font-size: 1.3rem;
-  margin-top: 0.6rem;
+  font-size: 1.35rem;
+  margin: 1.2rem 0 2rem;
   line-height: 1.4;
-  white-space: normal;           /* prevent nowrap issues */
 }
 
-/* Fix crypto card – better icon sizing & centering */
+.live-badge {
+  position: absolute;
+  top: -16px;
+  right: 1.8rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.55rem 1.3rem;
+  border-radius: 2rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 8px 24px var(--accent-glow);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-danger {
+  background: var(--accent);
+  border: none;
+  border-radius: 3rem;
+  padding: 1rem 2.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-danger:hover {
+  background: var(--accent-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
+
 .payment-methods {
   display: flex;
   justify-content: center;
@@ -154,52 +183,53 @@ html { scroll-behavior: smooth; }
 }
 
 .payment-methods .method {
-  width: 180px;
+  width: 190px;
+  padding: 2.4rem 1.6rem;
   text-align: center;
-  padding: 2.2rem 1.5rem;
   border-radius: var(--radius);
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(42,51,64,0.6);
   transition: var(--transition);
 }
 
 .payment-methods .method img {
-  height: 80px;                  /* bigger, consistent */
+  height: 90px;
   width: auto;
   margin-bottom: 1.4rem;
   object-fit: contain;
+  filter: brightness(1.05);
 }
 
 .payment-methods .method p {
+  font-size: 1.2rem;
   font-weight: 500;
   margin: 0;
-  font-size: 1.1rem;
 }
 
 .payment-methods .method:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   box-shadow: var(--shadow-glow);
+  border-color: rgba(255,51,102,0.4);
 }
 
-/* Other sections remain similar – add if needed */
 .card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(42,51,64,0.6);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+  transition: var(--transition);
 }
 
-.btn-danger {
-  background: var(--accent);
-  border: none;
-  border-radius: 3rem;
-  padding: 0.95rem 2.6rem;
-  font-size: 1.18rem;
-  font-weight: 600;
+.hero-section h1 {
+  font-size: clamp(3rem, 10vw, 5.8rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--accent), #ff6b8a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.btn-danger:hover {
-  background: var(--accent-hover);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-glow);
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0 2rem;
+  text-align: center;
 }
