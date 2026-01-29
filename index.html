@@ -15,7 +15,7 @@
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=29">
+  <link rel="stylesheet" href="/assets/css/main.css?v=30">
   <style>
     html { scroll-behavior: smooth; }
   </style>
@@ -30,18 +30,32 @@
   </nav>
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-    <div class="offcanvas-header">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body d-flex flex-column justify-content-between">
-      <ul class="nav flex-column mt-5">
-        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">FAC</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Download App</a></li>
+    <!-- Removed .offcanvas-header and .btn-close entirely -->
+    <div class="offcanvas-body d-flex flex-column justify-content-between p-0">
+      <ul class="nav flex-column mt-5 px-3">
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center py-4 px-4" href="/">
+            <i class="fas fa-home me-3 fs-4"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center py-4 px-4" href="#">
+            <i class="fas fa-question-circle me-3 fs-4"></i>
+            <span>FAC</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center py-4 px-4" href="#">
+            <i class="fas fa-download me-3 fs-4"></i>
+            <span>Download App</span>
+          </a>
+        </li>
       </ul>
-      <div class="mt-auto mb-5 text-center">
-        <button id="themeToggle" class="btn btn-link" aria-label="Toggle theme" style="font-size: 2.2rem;">
-          <i class="fas fa-moon"></i>
+
+      <div class="mt-auto mb-5 px-4 text-center">
+        <button id="themeToggle" class="btn btn-link p-4 w-100" aria-label="Toggle theme">
+          <i class="fas fa-moon fa-2x"></i>
         </button>
       </div>
     </div>
@@ -173,13 +187,17 @@
           : '<i class="fas fa-sun"></i>';
       });
 
-      const offcanvas = document.getElementById('sidebarMenu');
-      document.addEventListener('click', e => {
-        const toggler = document.querySelector('[data-bs-toggle="offcanvas"]');
-        if (offcanvas.classList.contains('show') && 
-            !offcanvas.contains(e.target) && 
-            !toggler.contains(e.target)) {
-          bootstrap.Offcanvas.getInstance(offcanvas)?.hide();
+      // Enhanced outside-click close (mobile-friendly)
+      const offcanvasEl = document.getElementById('sidebarMenu');
+      const offcanvas = new bootstrap.Offcanvas(offcanvasEl);
+
+      document.addEventListener('click', function(e) {
+        if (offcanvasEl.classList.contains('show')) {
+          const isClickInside = offcanvasEl.contains(e.target);
+          const isToggler = document.querySelector('[data-bs-toggle="offcanvas"]').contains(e.target);
+          if (!isClickInside && !isToggler) {
+            offcanvas.hide();
+          }
         }
       });
     }
@@ -187,4 +205,4 @@
     document.addEventListener('DOMContentLoaded', initPage);
   </script>
 </body>
-</html>
+              </html>
