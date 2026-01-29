@@ -3,19 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FutbolX VIP - Premium Sports Streaming</title>
-  <meta name="description" content="FutbolX - Unlock premium sports streaming with VIP membership. Watch PPV boxing, UFC, Basketball, Football, and more in HD.">
-  <meta name="keywords" content="futbolx, vip, premium streaming, ppv, boxing, ufc, basketball, football, stream, online">
-  <meta property="og:title" content="FutbolX VIP - Premium Sports Streaming" />
+  <title>FuboStreams VIP - Premium Sports Streaming</title>
+  <meta name="description" content="FuboStreams - Unlock premium sports streaming. Watch PPV boxing, UFC, Basketball, Football, and more in HD/4K.">
+  <meta name="keywords" content="fubostreams, vip, premium streaming, ppv, boxing, ufc, basketball, football, stream">
+  <meta property="og:title" content="FuboStreams VIP - Premium Sports Streaming" />
   <meta property="og:url" content="https://your-project-name.vercel.app/" />
-  <meta name="twitter:title" content="FutbolX VIP - Premium Sports Streaming">
-  <meta name="twitter:description" content="Unlock premium sports streaming with FutbolX VIP membership.">
+  <meta name="twitter:title" content="FuboStreams VIP - Premium Sports Streaming">
+  <meta name="twitter:description" content="Unlock premium sports streaming with FuboStreams VIP membership.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=26">
+  <link rel="stylesheet" href="/assets/css/main.css?v=27">
+  <style>
+    html { scroll-behavior: smooth; }
+    * { transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease; }
+    body { overflow-x: hidden; }
+  </style>
 </head>
 <body>
   <nav class="top-bar fixed-top">
@@ -23,7 +28,7 @@
       <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
         <i class="fas fa-bars"></i>
       </button>
-      <span class="futbolx-brand">FutbolX</span>
+      <!-- Removed brand name from top bar -->
     </div>
   </nav>
 
@@ -31,36 +36,31 @@
     <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-      <ul class="nav flex-column">
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <ul class="nav flex-column mt-4">
         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/request">Request</a></li>
-        <li class="nav-item"><a class="nav-link" href="/vods">VODs</a></li>
-        <li class="nav-item"><a class="nav-link" href="/24-7">24/7</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://discord.gg/CmRcPbBB2k">Discord</a></li>
-        <li class="nav-item"><a class="nav-link" href="/vip">VIP</a></li>
-        <li class="nav-item">
-          <button id="themeToggle" class="nav-link btn btn-link" aria-label="Toggle theme">
-            <i class="fas fa-moon"></i>
-          </button>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="#">FAC</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Download App</a></li>
       </ul>
+      <div class="mt-auto mb-4">
+        <button id="themeToggle" class="nav-link btn btn-link w-100 text-center" aria-label="Toggle theme" style="font-size: 1.8rem;">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
     </div>
   </div>
 
   <div class="container-fluid main-content">
     <div class="container">
-      <section class="hero-section py-5">
-        <div class="row align-items-center">
-          <div class="col-lg-12">
-            <h1 class="display-4 fw-bold">Premium Sports Streaming in HD Quality</h1>
-            <p class="lead">Watch all your favorite sports in crystal clear HD quality with zero buffering. Our premium streams work on all devices with multi-language commentary options.</p>
-            <a href="#pricing" class="btn btn-danger mt-3">View Pricing Plans</a>
-          </div>
+      <section class="hero-section py-5 text-center text-lg-start">
+        <div class="container">
+          <h1 class="display-3 fw-bold">Premium Live Sports</h1>
+          <p class="lead">HD • 4K • Zero buffering • PPV + major leagues • Multi-audio</p>
+          <a href="#pricing" class="btn btn-danger btn-lg mt-4 px-5 py-3">Get VIP Access</a>
         </div>
       </section>
 
-      <h2 id="pricing" class="mt-5">Choose Your Plan</h2>
+      <h2 id="pricing" class="mt-5 mb-5 text-center display-4 fw-bold">Choose Your Plan</h2>
       <div class="event-grid pricing-plans mb-5">
         <div class="card plan classic-card">
           <h3 class="card-title">Silver Package</h3>
@@ -83,19 +83,19 @@
         </div>
       </div>
 
-      <h2>Secure Payment Methods</h2>
-      <div class="event-grid payment-methods mb-5">
-        <div class="card method">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-          <p>PayPal</p>
+      <h2 class="mt-5 mb-5 text-center display-5 fw-bold">Trusted Payments</h2>
+      <div class="event-grid payment-methods mb-5 d-flex justify-content-center flex-wrap gap-5">
+        <div class="card method text-center p-4 shadow-hover">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height: 70px;">
+          <p class="mt-3 mb-0 fw-medium">PayPal</p>
         </div>
-        <div class="card method">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
-          <p>Credit/Debit</p>
+        <div class="card method text-center p-4 shadow-hover">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" style="height: 70px;">
+          <p class="mt-3 mb-0 fw-medium">Credit/Debit</p>
         </div>
-        <div class="card method">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin">
-          <p>Crypto</p>
+        <div class="card method text-center p-4 shadow-hover">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" style="height: 70px;">
+          <p class="mt-3 mb-0 fw-medium">Crypto</p>
         </div>
       </div>
 
@@ -127,31 +127,21 @@
         </div>
       </div>
 
-      <div id="admin" class="card admin-section mb-5">
-        <h3 class="card-title text-center">Want To Buy Account?</h3>
-        <div class="contact-card card">
-          <div class="contact-header">
-            <i class="fas fa-headset"></i>
-            <span>Contact The Admin On Telegram</span>
-          </div>
-          <a href="https://t.me/iniccur1" class="telegram-btn btn btn-danger" target="_blank">
-            <i class="fab fa-telegram"></i> 
+      <div id="admin" class="card admin-section mb-5 mx-auto" style="max-width: 500px;">
+        <div class="card-body text-center py-5">
+          <i class="fab fa-telegram-plane fa-5x mb-4" style="color: #0088cc;"></i>
+          <h3 class="card-title mb-4">Get Your Account Now</h3>
+          <p class="lead mb-4 text-secondary">Contact admin for instant setup & payment</p>
+          <a href="https://t.me/iniccur1" class="btn btn-danger btn-lg d-inline-flex align-items-center gap-3 px-5 py-3 shadow-hover" target="_blank">
+            <i class="fab fa-telegram fa-2x"></i>
             <span>Message on Telegram</span>
-            <i class="fas fa-paper-plane"></i>
           </a>
+          <p class="mt-4 text-muted small"><i class="fas fa-clock me-2"></i>24/7 Fast Response</p>
         </div>
-        <p class="support-text text-center text-muted"><i class="fas fa-clock"></i> 24/7 support available</p>
       </div>
 
-      <footer class="container-fluid d-flex flex-column flex-lg-row justify-content-lg-between align-items-center py-2 border-top mt-5">
-        <p class="mb-2 mb-lg-0 text-body-secondary text-center text-lg-start">© FutbolX 2025</p>
-        <ul class="nav justify-content-center justify-content-lg-end mb-0">
-          <li class="nav-item"><a href="/api" class="nav-link px-2 text-body-secondary">API</a></li>
-          <li class="nav-item"><a href="https://discord.gg/CmRcPbBB2k" class="nav-link px-2 text-body-secondary">Discord</a></li>
-          <li class="nav-item"><a href="/changelog" class="nav-link px-2 text-body-secondary">Changelog</a></li>
-          <li class="nav-item"><a href="/vip" class="nav-link px-2 text-body-secondary">Donate / VIP Access</a></li>
-          <li class="nav-item"><a href="/contact" class="nav-link px-2 text-body-secondary">Contact us</a></li>
-        </ul>
+      <footer class="container-fluid text-center py-4 border-top mt-5">
+        <p class="mb-0 text-body-secondary">FuboStreams 2026</p>
       </footer>
     </div>
   </div>
@@ -159,33 +149,29 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   <script>
     function initPage() {
-      try {
-        const htmlElement = document.documentElement;
-        const themeToggle = document.getElementById('themeToggle');
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        htmlElement.setAttribute('data-bs-theme', currentTheme);
-        themeToggle.innerHTML = currentTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-        
-        themeToggle.addEventListener('click', () => {
-          const newTheme = htmlElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-          htmlElement.setAttribute('data-bs-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-        });
+      const html = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      let theme = localStorage.getItem('theme') || 'dark';
+      html.setAttribute('data-bs-theme', theme);
+      toggle.innerHTML = theme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
 
-        // Close offcanvas on outside click
-        const offcanvasElement = document.getElementById('sidebarMenu');
-        document.addEventListener('click', (event) => {
-          const toggler = document.querySelector('[data-bs-toggle="offcanvas"]');
-          const isOffcanvasOpen = offcanvasElement.classList.contains('show');
-          const clickedInside = offcanvasElement.contains(event.target) || toggler.contains(event.target);
-          if (isOffcanvasOpen && !clickedInside) {
-            bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement).hide();
-          }
-        });
-      } catch (error) {
-        console.error('Init error:', error);
-      }
+      toggle.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-bs-theme', theme);
+        localStorage.setItem('theme', theme);
+        toggle.innerHTML = theme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+      });
+
+      // Close offcanvas when clicking outside
+      const offcanvas = document.getElementById('sidebarMenu');
+      document.addEventListener('click', e => {
+        const toggler = document.querySelector('[data-bs-toggle="offcanvas"]');
+        if (offcanvas.classList.contains('show') && 
+            !offcanvas.contains(e.target) && 
+            !toggler.contains(e.target)) {
+          bootstrap.Offcanvas.getInstance(offcanvas).hide();
+        }
+      });
     }
 
     document.addEventListener('DOMContentLoaded', initPage);
