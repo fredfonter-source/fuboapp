@@ -10,11 +10,11 @@
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=39">
+  <link rel="stylesheet" href="/assets/css/main.css?v=41">
   <style>
     :root {
       --bg: #0a0e14;
-      --card-bg: rgba(20, 25, 35, 0.65);
+      --card-bg: rgba(20, 25, 35, 0.7);
       --text: #f0f4f8;
       --muted: #a0b0c0;
       --accent: #00d4ff;
@@ -24,12 +24,23 @@
       --transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    [data-bs-theme="light"] {
+      --bg: #f8f9fa;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --text: #1a2533;
+      --muted: #5a6b80;
+      --accent: #0066cc;
+      --accent-glow: rgba(0, 102, 204, 0.2);
+      --glass: rgba(0, 0, 0, 0.03);
+    }
+
     body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Kanit', sans-serif;
       margin: 0;
       overflow-x: hidden;
+      transition: background 0.6s ease;
     }
 
     .top-bar {
@@ -43,8 +54,7 @@
       background: rgba(10, 14, 20, 0.96);
       backdrop-filter: blur(16px);
       border-right: none;
-      width: clamp(240px, 65vw, 280px) !important; /* smaller & responsive */
-      max-width: 280px;
+      width: clamp(240px, 60vw, 280px) !important;
     }
 
     .nav-link {
@@ -52,115 +62,106 @@
       padding: 1rem 1.4rem !important;
       border-radius: 12px;
       transition: var(--transition);
-      font-size: 1.15rem;
     }
 
     .nav-link:hover {
       background: var(--glass);
       color: white !important;
       transform: translateX(8px);
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-
-    .nav-link.active {
-      background: rgba(0,212,255,0.15);
-      color: var(--accent) !important;
-      font-weight: 600;
-      border-left: 4px solid var(--accent);
     }
 
     .main-content {
-      padding: 2rem 1rem 5rem; /* reduced top padding to let hero sit closer */
+      padding: 2rem 1rem 5rem;
     }
 
     .container {
-      max-width: 1600px; /* wider on big screens (PC/TV) */
+      max-width: 1600px;
       padding: 0 clamp(1rem, 5vw, 4rem);
     }
 
-    /* Hero – now full-width, falls slightly under top bar */
+    /* Hero section – fixed, no overlap, slideshow behind heading only */
     .hero-section {
       position: relative;
-      min-height: 70vh;
+      min-height: 50vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
       text-align: center;
-      overflow: hidden;
-      margin-top: -4rem; /* slight overlap under top bar */
-      padding-top: 6rem; /* compensate for negative margin */
+      padding: 6rem 1rem 4rem;
     }
 
-    .hero-bg {
+    .hero-slides {
       position: absolute;
       inset: 0;
       z-index: -2;
     }
 
-    .hero-bg img {
+    .hero-slides img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain; /* keeps original ratio, no stretch */
+      object-fit: contain; /* no stretch, original ratio */
       object-position: center;
       opacity: 0;
       transition: opacity 2s ease-in-out;
     }
 
-    .hero-bg img.active {
-      opacity: 0.88; /* brighter slideshow */
+    .hero-slides img.active {
+      opacity: 0.85; /* brighter */
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(10,14,20,0.65), rgba(10,14,20,0.85)); /* brighter/less dark */
+      background: linear-gradient(to bottom, rgba(10,14,20,0.65), rgba(10,14,20,0.85));
       z-index: -1;
     }
 
     .hero-title {
-      font-size: clamp(3.8rem, 12vw, 8rem);
+      font-size: clamp(3.5rem, 11vw, 7rem);
       font-weight: 900;
       background: linear-gradient(90deg, var(--accent), #00ffea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 60px var(--accent-glow);
-      margin-bottom: 1.2rem;
-      line-height: 1;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
     }
 
     .hero-lead {
-      font-size: clamp(1.4rem, 5vw, 2.1rem);
+      font-size: clamp(1.3rem, 4.5vw, 1.9rem);
       color: var(--text);
-      max-width: 1100px;
-      margin: 0 auto 2.8rem;
+      max-width: 1000px;
+      margin: 0 auto 2.5rem;
       text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-      white-space: pre-wrap; /* prevents cut-off words */
-      word-break: break-word;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      hyphens: auto;
     }
 
     .btn-glow {
       background: var(--accent);
       border: none;
       border-radius: 50px;
-      padding: 1.2rem 4rem;
-      font-size: 1.4rem;
+      padding: 1.1rem 3.5rem;
+      font-size: 1.35rem;
       font-weight: 600;
-      box-shadow: 0 0 50px var(--accent-glow);
+      box-shadow: 0 0 40px var(--accent-glow);
       transition: var(--transition);
     }
 
     .btn-glow:hover {
-      transform: translateY(-10px) scale(1.08);
-      box-shadow: 0 0 100px var(--accent-glow);
+      transform: translateY(-8px);
+      box-shadow: 0 0 80px var(--accent-glow);
     }
 
-    /* Pricing cards – cool & spacious */
+    /* Pricing cards */
     .pricing-plans {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 3.5rem;
-      margin: 6rem 0;
+      gap: 3rem;
+      margin: 5rem 0;
     }
 
     .plan {
@@ -168,66 +169,46 @@
       backdrop-filter: blur(16px);
       border: 1px solid rgba(0,212,255,0.15);
       border-radius: var(--radius);
-      padding: 3.5rem 2.5rem;
+      padding: 3rem 2rem;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.6);
       transition: var(--transition);
-      position: relative;
     }
 
     .plan:hover {
-      transform: translateY(-20px);
-      box-shadow: 0 40px 120px var(--accent-glow);
-      border-color: var(--accent);
-    }
-
-    .plan h3 {
-      font-size: 2.4rem;
-      margin-bottom: 2rem;
+      transform: translateY(-16px);
+      box-shadow: 0 30px 100px var(--accent-glow);
     }
 
     .price {
-      font-size: 5.5rem;
+      font-size: 5rem;
       font-weight: 900;
       background: linear-gradient(90deg, var(--accent), #00ffea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1;
       margin: 0;
-    }
-
-    .price-unit {
-      font-size: 2rem;
-      color: var(--accent);
-      margin: 0.8rem 0 1.5rem;
-    }
-
-    .duration {
-      font-size: 1.5rem;
-      color: var(--muted);
-      margin-bottom: 3rem;
     }
 
     .live-badge {
       position: absolute;
-      top: -18px;
+      top: -16px;
       right: 2rem;
       background: var(--accent);
       color: white;
-      padding: 0.7rem 1.5rem;
+      padding: 0.6rem 1.4rem;
       border-radius: 50px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
-      box-shadow: 0 0 40px var(--accent-glow);
+      box-shadow: 0 0 30px var(--accent-glow);
     }
 
-    /* Secure Payments */
+    /* Payments & other sections */
     .payment-methods {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 3.5rem;
-      margin: 6rem 0;
+      gap: 3rem;
+      margin: 5rem 0;
     }
 
     .method {
@@ -237,55 +218,12 @@
       border-radius: var(--radius);
       width: 240px;
       padding: 3rem 2rem;
-      text-align: center;
       transition: var(--transition);
     }
 
     .method:hover {
-      transform: translateY(-16px);
-      box-shadow: 0 30px 90px var(--accent-glow);
-    }
-
-    .method img {
-      height: 90px;
-      margin-bottom: 1.8rem;
-    }
-
-    .method p {
-      font-size: 1.4rem;
-      font-weight: 500;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 5rem 0 3rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    /* Big screens (PC/TV) */
-    @media (min-width: 1200px) {
-      .hero-section {
-        min-height: 90vh;
-        padding-top: 8rem;
-      }
-
-      .hero-title {
-        font-size: 9rem;
-      }
-
-      .pricing-plans {
-        gap: 4rem;
-      }
-
-      .plan {
-        padding: 4rem 3rem;
-      }
-
-      .price {
-        font-size: 7rem;
-      }
+      transform: translateY(-12px);
+      box-shadow: 0 20px 60px var(--accent-glow);
     }
   </style>
 </head>
@@ -328,7 +266,7 @@
 
   <div class="container-fluid main-content">
     <div class="container">
-      <!-- Hero section – full top placement, slideshow only behind heading -->
+      <!-- Hero section – fixed, no overlap, slideshow behind heading only -->
       <section class="hero-section">
         <div class="hero-bg">
           <img src="https://deadline.com/wp-content/uploads/2021/01/fuboTV-_Platform-Image_Oct-2020.jpg" alt="1" class="active">
@@ -435,7 +373,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Theme toggle
+    // Theme toggle - full site switch
     const html = document.documentElement;
     const toggle = document.getElementById('themeToggle');
     let theme = localStorage.getItem('theme') || 'dark';
@@ -447,6 +385,8 @@
       html.setAttribute('data-bs-theme', theme);
       localStorage.setItem('theme', theme);
       toggle.innerHTML = theme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+      // Force refresh styles if needed
+      document.body.style.background = ''; // trigger repaint
     });
 
     // Slideshow
@@ -458,7 +398,7 @@
       slides[idx].classList.add('active');
     }, 6000);
 
-    // Sidebar close on outside tap
+    // Sidebar close
     const offcanvas = document.getElementById('sidebarMenu');
     document.addEventListener('click', e => {
       if (offcanvas.classList.contains('show') && !offcanvas.contains(e.target) && !document.querySelector('[data-bs-toggle="offcanvas"]').contains(e.target)) {
@@ -467,4 +407,4 @@
     });
   </script>
 </body>
-            </html>
+  </html>
