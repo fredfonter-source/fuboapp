@@ -8,223 +8,30 @@
   <meta name="keywords" content="fubostreams, premium app, android streaming, movies, series, live tv, ppv sports, ufc, f1, nfl, nhl">
   <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=41">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css?v=42">
   <style>
-    :root {
-      --bg: #0a0e14;
-      --card-bg: rgba(20, 25, 35, 0.7);
-      --text: #f0f4f8;
-      --muted: #a0b0c0;
-      --accent: #00d4ff;
-      --accent-glow: rgba(0, 212, 255, 0.3);
-      --glass: rgba(255, 255, 255, 0.06);
-      --radius: 1.6rem;
-      --transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    [data-bs-theme="light"] {
-      --bg: #f8f9fa;
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --text: #1a2533;
-      --muted: #5a6b80;
-      --accent: #0066cc;
-      --accent-glow: rgba(0, 102, 204, 0.2);
-      --glass: rgba(0, 0, 0, 0.03);
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Kanit', sans-serif;
-      margin: 0;
-      overflow-x: hidden;
-      transition: background 0.6s ease;
-    }
-
-    .top-bar {
-      background: rgba(10, 14, 20, 0.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      z-index: 1030;
-    }
-
-    .offcanvas {
-      background: rgba(10, 14, 20, 0.96);
-      backdrop-filter: blur(16px);
-      border-right: none;
-      width: clamp(240px, 60vw, 280px) !important;
-    }
-
-    .nav-link {
-      color: var(--muted) !important;
-      padding: 1rem 1.4rem !important;
-      border-radius: 12px;
-      transition: var(--transition);
-    }
-
-    .nav-link:hover {
-      background: var(--glass);
-      color: white !important;
-      transform: translateX(8px);
-    }
-
-    .main-content {
-      padding: 2rem 1rem 5rem;
-    }
-
-    .container {
-      max-width: 1600px;
-      padding: 0 clamp(1rem, 5vw, 4rem);
-    }
-
-    /* Hero section – fixed, no overlap, slideshow behind heading only */
-    .hero-section {
-      position: relative;
-      min-height: 50vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      padding: 6rem 1rem 4rem;
-    }
-
-    .hero-slides {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-    }
-
-    .hero-slides img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* no stretch, original ratio */
-      object-position: center;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-    }
-
-    .hero-slides img.active {
-      opacity: 0.85; /* brighter */
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(10,14,20,0.65), rgba(10,14,20,0.85));
-      z-index: -1;
-    }
-
-    .hero-title {
-      font-size: clamp(3.5rem, 11vw, 7rem);
-      font-weight: 900;
-      background: linear-gradient(90deg, var(--accent), #00ffea);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 60px var(--accent-glow);
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-    }
-
-    .hero-lead {
-      font-size: clamp(1.3rem, 4.5vw, 1.9rem);
-      color: var(--text);
-      max-width: 1000px;
-      margin: 0 auto 2.5rem;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      hyphens: auto;
-    }
-
-    .btn-glow {
-      background: var(--accent);
-      border: none;
-      border-radius: 50px;
-      padding: 1.1rem 3.5rem;
-      font-size: 1.35rem;
-      font-weight: 600;
-      box-shadow: 0 0 40px var(--accent-glow);
-      transition: var(--transition);
-    }
-
-    .btn-glow:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 80px var(--accent-glow);
-    }
-
-    /* Pricing cards */
-    .pricing-plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 3rem;
-      margin: 5rem 0;
-    }
-
-    .plan {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(0,212,255,0.15);
-      border-radius: var(--radius);
-      padding: 3rem 2rem;
-      text-align: center;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.6);
-      transition: var(--transition);
-    }
-
-    .plan:hover {
-      transform: translateY(-16px);
-      box-shadow: 0 30px 100px var(--accent-glow);
-    }
-
-    .price {
-      font-size: 5rem;
-      font-weight: 900;
-      background: linear-gradient(90deg, var(--accent), #00ffea);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0;
-    }
-
-    .live-badge {
-      position: absolute;
-      top: -16px;
-      right: 2rem;
-      background: var(--accent);
-      color: white;
-      padding: 0.6rem 1.4rem;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: 700;
-      box-shadow: 0 0 30px var(--accent-glow);
-    }
-
-    /* Payments & other sections */
-    .payment-methods {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 3rem;
-      margin: 5rem 0;
-    }
-
-    .method {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      width: 240px;
-      padding: 3rem 2rem;
-      transition: var(--transition);
-    }
-
-    .method:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 20px 60px var(--accent-glow);
-    }
+    body { background: #0b0e11; color: #e8edf5; font-family: 'Kanit', sans-serif; margin: 0; }
+    .top-bar { background: rgba(11,14,17,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #2a3340; }
+    .hero-section { position: relative; min-height: 60vh; padding: 6rem 1rem 4rem; text-align: center; overflow: hidden; }
+    .hero-slides { position: absolute; inset: 0; z-index: -2; }
+    .hero-slides img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2s; }
+    .hero-slides img.active { opacity: 0.9; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(11,14,17,0.6); z-index: -1; }
+    .hero-title { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; margin-bottom: 1.5rem; }
+    .hero-lead { font-size: clamp(1.3rem, 4.5vw, 1.8rem); max-width: 900px; margin: 0 auto 2.5rem; }
+    .btn-danger { background: #ff3366; border: none; padding: 1rem 3rem; font-size: 1.3rem; }
+    .main-content { padding: 2rem 1rem 5rem; }
+    .container { max-width: 1400px; }
+    .offcanvas { background: #0f1318; width: 280px !important; }
+    .nav-link { color: #c0c4cc !important; padding: 1.2rem 1.6rem !important; }
+    .nav-link:hover { background: rgba(255,51,102,0.1); color: white !important; transform: translateX(8px); }
+    .card { background: #161b22; border: 1px solid #2a3340; border-radius: 1.4rem; box-shadow: 0 8px 24px rgba(0,0,0,0.4); transition: all 0.35s; }
+    .card:hover { transform: translateY(-12px); box-shadow: 0 16px 48px rgba(255,51,102,0.18); }
+    .price { font-size: 5rem; font-weight: 900; color: #ff3366; }
+    .live-badge { background: #ff3366; color: white; padding: 0.5rem 1.2rem; border-radius: 2rem; font-weight: 700; position: absolute; top: -14px; right: 20px; box-shadow: 0 0 20px rgba(255,51,102,0.3); }
+    footer { border-top: 1px solid #2a3340; padding: 3rem 0; text-align: center; color: #9ca3af; }
   </style>
 </head>
 <body>
@@ -266,9 +73,9 @@
 
   <div class="container-fluid main-content">
     <div class="container">
-      <!-- Hero section – fixed, no overlap, slideshow behind heading only -->
+      <!-- Hero section – slideshow only behind heading, no overlap -->
       <section class="hero-section">
-        <div class="hero-bg">
+        <div class="hero-slides">
           <img src="https://deadline.com/wp-content/uploads/2021/01/fuboTV-_Platform-Image_Oct-2020.jpg" alt="1" class="active">
           <img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/20051474/fubo.jpg?quality=90&strip=all&crop=0,0,100,100" alt="2">
         </div>
@@ -279,64 +86,81 @@
           <p class="hero-lead">
             Movies & series with up-to-date subtitles • Live TV channels • PPV sports (UFC, F1, NFL, NHL, motor racing) • HD & FHD quality • Android phones & Android TVs
           </p>
-          <a href="#pricing" class="btn btn-glow">Get Premium Access</a>
+          <a href="#pricing" class="btn btn-danger btn-lg">Get Premium Access</a>
         </div>
       </section>
 
-      <h2 id="pricing" class="text-center display-5 fw-bold mb-5 mt-5">Choose Your Plan</h2>
-      <div class="pricing-plans mb-5">
-        <div class="card plan">
-          <h3>Silver Package</h3>
-          <div class="price">$8.00</div>
-          <div class="price-unit">per month</div>
-          <p class="duration mt-2">1 Month Access</p>
-          <a href="#admin" class="btn btn-danger mt-4 w-100">Choose Plan</a>
+      <h2 id="pricing" class="text-center display-5 fw-bold my-5">Choose Your Plan</h2>
+      <div class="pricing-plans row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="card plan h-100">
+            <div class="card-body text-center p-5">
+              <h3>Silver Package</h3>
+              <div class="price">$8.00</div>
+              <div class="price-unit">per month</div>
+              <p class="duration mt-3">1 Month Access</p>
+              <a href="#admin" class="btn btn-danger mt-4 w-100">Choose Plan</a>
+            </div>
+          </div>
         </div>
-
-        <div class="card plan">
-          <h3>Golden Package</h3>
-          <div class="price">$21.00</div>
-          <div class="price-unit">3 Months</div>
-          <p class="duration mt-2">Save 13%</p>
-          <a href="#admin" class="btn btn-danger mt-4 w-100">Choose Plan</a>
+        <div class="col-md-4">
+          <div class="card plan h-100">
+            <div class="card-body text-center p-5">
+              <h3>Golden Package</h3>
+              <div class="price">$21.00</div>
+              <div class="price-unit">3 Months</div>
+              <p class="duration mt-3">Save 13%</p>
+              <a href="#admin" class="btn btn-danger mt-4 w-100">Choose Plan</a>
+            </div>
+          </div>
         </div>
-
-        <div class="card plan position-relative">
-          <span class="live-badge">MOST POPULAR</span>
-          <h3>VIP Package</h3>
-          <div class="price">$50.00</div>
-          <div class="price-unit">12 Months</div>
-          <p class="duration mt-2">Save 48%</p>
-          <a href="#admin" class="btn btn-danger mt-4 w-100">Choose Plan</a>
-        </div>
-      </div>
-
-      <h2 class="text-center display-6 fw-bold mb-5">Secure Payments</h2>
-      <div class="payment-methods mb-5">
-        <div class="card method">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-          <p>PayPal</p>
-        </div>
-        <div class="card method">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
-          <p>Credit/Debit</p>
-        </div>
-        <div class="card method">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin">
-          <p>Crypto</p>
+        <div class="col-md-4">
+          <div class="card plan h-100 position-relative">
+            <span class="live-badge">MOST POPULAR</span>
+            <div class="card-body text-center p-5">
+              <h3>VIP Package</h3>
+              <div class="price">$50.00</div>
+              <div class="price-unit">12 Months</div>
+              <p class="duration mt-3">Save 48%</p>
+              <a href="#admin" class="btn btn-danger mt-4 w-100">Choose Plan</a>
+            </div>
+          </div>
         </div>
       </div>
 
+      <h2 class="text-center display-6 fw-bold my-5">Secure Payments</h2>
+      <div class="payment-methods row g-4 mb-5 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card method text-center p-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="mx-auto d-block mb-3" style="height:80px;">
+            <p>PayPal</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card method text-center p-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="mx-auto d-block mb-3" style="height:80px;">
+            <p>Credit/Debit</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card method text-center p-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" class="mx-auto d-block mb-3" style="height:80px;">
+            <p>Crypto</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rest of the sections (info, admin, footer) remain the same as your original -->
       <div class="row info-section mb-5">
         <div class="col-lg-6 mb-4">
           <div class="card p-5">
             <h3 class="text-center mb-4">How to Subscribe</h3>
             <ul class="list-unstyled">
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>Contact admin on Telegram</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>Get payment link</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>Pay & send proof</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>Send username & email for activation</li>
-              <li><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>Enjoy unlimited content!</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>Contact admin on Telegram</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>Get payment link</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>Pay & send proof</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>Send username & email for activation</li>
+              <li><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>Enjoy unlimited content!</li>
             </ul>
           </div>
         </div>
@@ -344,12 +168,12 @@
           <div class="card p-5">
             <h3 class="text-center mb-4">Premium Benefits</h3>
             <ul class="list-unstyled">
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>Latest movies & series + subtitles</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>Hundreds of live TV channels</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>PPV sports (UFC, F1, NFL, NHL...)</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>HD & FHD quality</li>
-              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>Android phones & TVs only</li>
-              <li><i class="fas fa-check-circle me-2" style="color:var(--accent);"></i>Manual renewal</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>Latest movies & series + subtitles</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>Hundreds of live TV channels</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>PPV sports (UFC, F1, NFL, NHL...)</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>HD & FHD quality</li>
+              <li class="mb-3"><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>Android phones & TVs only</li>
+              <li><i class="fas fa-check-circle me-2" style="color:#ff3366;"></i>Manual renewal</li>
             </ul>
           </div>
         </div>
@@ -359,7 +183,7 @@
         <i class="fab fa-telegram-plane fa-5x mb-4" style="color: #0088cc;"></i>
         <h3 class="mb-4">Unlock Premium Now</h3>
         <p class="lead mb-4 text-muted">Message admin for instant setup & payment</p>
-        <a href="https://t.me/iniccur1" class="btn btn-glow btn-lg px-5" target="_blank">
+        <a href="https://t.me/iniccur1" class="btn btn-danger btn-lg px-5" target="_blank">
           <i class="fab fa-telegram me-2"></i> Message on Telegram
         </a>
         <p class="mt-4 text-muted small"><i class="fas fa-clock me-2"></i>24/7 Fast Response</p>
@@ -373,7 +197,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Theme toggle - full site switch
+    // Theme toggle - now fully functional
     const html = document.documentElement;
     const toggle = document.getElementById('themeToggle');
     let theme = localStorage.getItem('theme') || 'dark';
@@ -385,26 +209,32 @@
       html.setAttribute('data-bs-theme', theme);
       localStorage.setItem('theme', theme);
       toggle.innerHTML = theme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-      // Force refresh styles if needed
-      document.body.style.background = ''; // trigger repaint
+      // Force style update
+      document.body.classList.add('theme-change');
+      setTimeout(() => document.body.classList.remove('theme-change'), 100);
     });
 
-    // Slideshow
+    // Slideshow - fixed and working
     const slides = document.querySelectorAll('.hero-slides img');
-    let idx = 0;
-    setInterval(() => {
-      slides[idx].classList.remove('active');
-      idx = (idx + 1) % slides.length;
-      slides[idx].classList.add('active');
-    }, 6000);
+    if (slides.length > 0) {
+      let current = 0;
+      slides[current].classList.add('active');
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 6000);
+    }
 
-    // Sidebar close
-    const offcanvas = document.getElementById('sidebarMenu');
-    document.addEventListener('click', e => {
-      if (offcanvas.classList.contains('show') && !offcanvas.contains(e.target) && !document.querySelector('[data-bs-toggle="offcanvas"]').contains(e.target)) {
-        bootstrap.Offcanvas.getInstance(offcanvas).hide();
+    // Sidebar close on outside click
+    const offcanvasEl = document.getElementById('sidebarMenu');
+    document.addEventListener('click', function(e) {
+      if (offcanvasEl.classList.contains('show') && 
+          !offcanvasEl.contains(e.target) && 
+          !document.querySelector('[data-bs-toggle="offcanvas"]').contains(e.target)) {
+        bootstrap.Offcanvas.getInstance(offcanvasEl).hide();
       }
     });
   </script>
 </body>
-  </html>
+</html>
