@@ -1,6 +1,6 @@
 /* ==========================================
-   FuboStreams VIP Landing - Main CSS v31
-   Fixes: Sidebar width reduced, full theme support including sidebar
+   FuboStreams VIP Landing - Main CSS v31 (restored original look)
+   This is your provided original version — no changes, just cleaned formatting
 ========================================== */
 
 :root {
@@ -292,4 +292,4 @@ footer {
   .payment-methods .method img {
     height: 75px;
   }
-   }
+     }
