@@ -10,7 +10,7 @@
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=38">
+  <link rel="stylesheet" href="/assets/css/main.css?v=39">
   <style>
     :root {
       --bg: #0a0e14;
@@ -33,154 +33,161 @@
     }
 
     .top-bar {
-      background: rgba(10, 14, 20, 0.9);
+      background: rgba(10, 14, 20, 0.92);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
+      z-index: 1030;
     }
 
     .offcanvas {
       background: rgba(10, 14, 20, 0.96);
       backdrop-filter: blur(16px);
       border-right: none;
-      width: 280px;
+      width: clamp(240px, 65vw, 280px) !important; /* smaller & responsive */
+      max-width: 280px;
     }
 
     .nav-link {
       color: var(--muted) !important;
-      padding: 1.1rem 1.6rem !important;
+      padding: 1rem 1.4rem !important;
       border-radius: 12px;
       transition: var(--transition);
+      font-size: 1.15rem;
     }
 
     .nav-link:hover {
       background: var(--glass);
       color: white !important;
       transform: translateX(8px);
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
     .nav-link.active {
       background: rgba(0,212,255,0.15);
       color: var(--accent) !important;
       font-weight: 600;
+      border-left: 4px solid var(--accent);
     }
 
     .main-content {
-      padding: 7rem 1rem 5rem;
+      padding: 2rem 1rem 5rem; /* reduced top padding to let hero sit closer */
     }
 
-    /* Hero heading – slideshow only behind title */
-    .hero-heading {
+    .container {
+      max-width: 1600px; /* wider on big screens (PC/TV) */
+      padding: 0 clamp(1rem, 5vw, 4rem);
+    }
+
+    /* Hero – now full-width, falls slightly under top bar */
+    .hero-section {
       position: relative;
-      padding: 6rem 1rem 3rem;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
       text-align: center;
-      min-height: 40vh;
       overflow: hidden;
+      margin-top: -4rem; /* slight overlap under top bar */
+      padding-top: 6rem; /* compensate for negative margin */
     }
 
-    .hero-slides {
+    .hero-bg {
       position: absolute;
       inset: 0;
       z-index: -2;
     }
 
-    .hero-slides img {
+    .hero-bg img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;               /* keeps original ratio, no stretch */
+      object-fit: contain; /* keeps original ratio, no stretch */
       object-position: center;
       opacity: 0;
       transition: opacity 2s ease-in-out;
-      background: #0a0e14;               /* fallback color if image doesn't fill */
     }
 
-    .hero-slides img.active {
-      opacity: 0.75;
+    .hero-bg img.active {
+      opacity: 0.88; /* brighter slideshow */
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(10,14,20,0.85), rgba(10,14,20,0.95));
+      background: linear-gradient(to bottom, rgba(10,14,20,0.65), rgba(10,14,20,0.85)); /* brighter/less dark */
       z-index: -1;
     }
 
     .hero-title {
-      font-size: clamp(3.8rem, 12vw, 7.5rem);
+      font-size: clamp(3.8rem, 12vw, 8rem);
       font-weight: 900;
-      background: linear-gradient(90deg, var(--accent), #00ffea, var(--accent));
+      background: linear-gradient(90deg, var(--accent), #00ffea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 50px var(--accent-glow);
-      margin-bottom: 0.8rem;
+      text-shadow: 0 0 60px var(--accent-glow);
+      margin-bottom: 1.2rem;
       line-height: 1;
     }
 
-    /* Lead text & button – no background image here */
-    .hero-info {
-      padding: 1rem 1rem 6rem;
-      text-align: center;
-    }
-
     .hero-lead {
-      font-size: clamp(1.4rem, 5vw, 2rem);
-      color: var(--muted);
-      max-width: 900px;
-      margin: 0 auto 2.5rem;
+      font-size: clamp(1.4rem, 5vw, 2.1rem);
+      color: var(--text);
+      max-width: 1100px;
+      margin: 0 auto 2.8rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      white-space: pre-wrap; /* prevents cut-off words */
+      word-break: break-word;
     }
 
     .btn-glow {
       background: var(--accent);
       border: none;
       border-radius: 50px;
-      padding: 1.1rem 3.5rem;
-      font-size: 1.35rem;
+      padding: 1.2rem 4rem;
+      font-size: 1.4rem;
       font-weight: 600;
-      box-shadow: 0 0 40px var(--accent-glow);
+      box-shadow: 0 0 50px var(--accent-glow);
       transition: var(--transition);
     }
 
     .btn-glow:hover {
-      transform: translateY(-8px) scale(1.06);
-      box-shadow: 0 0 80px var(--accent-glow);
+      transform: translateY(-10px) scale(1.08);
+      box-shadow: 0 0 100px var(--accent-glow);
     }
 
-    /* Pricing cards – cool glass + neon style */
+    /* Pricing cards – cool & spacious */
     .pricing-plans {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 3rem;
-      margin: 5rem 0;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 3.5rem;
+      margin: 6rem 0;
     }
 
     .plan {
       background: var(--card-bg);
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(0,212,255,0.12);
+      border: 1px solid rgba(0,212,255,0.15);
       border-radius: var(--radius);
-      padding: 3rem 2rem;
+      padding: 3.5rem 2.5rem;
       text-align: center;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
       transition: var(--transition);
       position: relative;
-      overflow: hidden;
     }
 
     .plan:hover {
-      transform: translateY(-16px);
-      box-shadow: 0 30px 100px var(--accent-glow);
+      transform: translateY(-20px);
+      box-shadow: 0 40px 120px var(--accent-glow);
       border-color: var(--accent);
     }
 
     .plan h3 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       margin-bottom: 2rem;
-      color: var(--text);
     }
 
     .price {
-      font-size: 5rem;
+      font-size: 5.5rem;
       font-weight: 900;
       background: linear-gradient(90deg, var(--accent), #00ffea);
       -webkit-background-clip: text;
@@ -190,29 +197,28 @@
     }
 
     .price-unit {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: var(--accent);
-      margin: 0.5rem 0 1rem;
+      margin: 0.8rem 0 1.5rem;
     }
 
     .duration {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: var(--muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
 
     .live-badge {
       position: absolute;
-      top: -16px;
-      right: 20px;
+      top: -18px;
+      right: 2rem;
       background: var(--accent);
       color: white;
-      padding: 0.6rem 1.4rem;
+      padding: 0.7rem 1.5rem;
       border-radius: 50px;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      box-shadow: 0 0 30px var(--accent-glow);
-      text-transform: uppercase;
+      box-shadow: 0 0 40px var(--accent-glow);
     }
 
     /* Secure Payments */
@@ -220,8 +226,8 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 3rem;
-      margin: 5rem 0;
+      gap: 3.5rem;
+      margin: 6rem 0;
     }
 
     .method {
@@ -229,39 +235,63 @@
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: var(--radius);
-      width: 220px;
-      padding: 2.5rem 1.5rem;
+      width: 240px;
+      padding: 3rem 2rem;
       text-align: center;
       transition: var(--transition);
     }
 
     .method:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 20px 60px var(--accent-glow);
+      transform: translateY(-16px);
+      box-shadow: 0 30px 90px var(--accent-glow);
     }
 
     .method img {
-      height: 80px;
-      margin-bottom: 1.5rem;
+      height: 90px;
+      margin-bottom: 1.8rem;
     }
 
     .method p {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 500;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 4rem 0 2rem;
+      padding: 5rem 0 3rem;
       color: var(--muted);
       text-align: center;
+    }
+
+    /* Big screens (PC/TV) */
+    @media (min-width: 1200px) {
+      .hero-section {
+        min-height: 90vh;
+        padding-top: 8rem;
+      }
+
+      .hero-title {
+        font-size: 9rem;
+      }
+
+      .pricing-plans {
+        gap: 4rem;
+      }
+
+      .plan {
+        padding: 4rem 3rem;
+      }
+
+      .price {
+        font-size: 7rem;
+      }
     }
   </style>
 </head>
 <body>
   <nav class="top-bar fixed-top">
-    <div class="container-fluid px-3 px-md-4">
+    <div class="container-fluid px-3 px-md-5">
       <button class="btn btn-dark me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
         <i class="fas fa-bars fa-lg"></i>
       </button>
@@ -298,23 +328,21 @@
 
   <div class="container-fluid main-content">
     <div class="container">
-      <!-- Hero heading only with slideshow behind it -->
-      <section class="hero-heading">
-        <div class="hero-slides">
+      <!-- Hero section – full top placement, slideshow only behind heading -->
+      <section class="hero-section">
+        <div class="hero-bg">
           <img src="https://deadline.com/wp-content/uploads/2021/01/fuboTV-_Platform-Image_Oct-2020.jpg" alt="1" class="active">
           <img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/20051474/fubo.jpg?quality=90&strip=all&crop=0,0,100,100" alt="2">
         </div>
         <div class="hero-overlay"></div>
 
-        <h1 class="hero-title">Unlimited Entertainment on Android</h1>
-      </section>
-
-      <!-- Lead text + button – no background slideshow here -->
-      <section class="hero-info">
-        <p class="hero-lead">
-          Movies & series with up-to-date subtitles • Live TV channels • PPV sports (UFC, F1, NFL, NHL, motor racing) • HD & FHD quality • Android phones & Android TVs
-        </p>
-        <a href="#pricing" class="btn btn-glow">Get Premium Access</a>
+        <div class="hero-content">
+          <h1 class="hero-title">Unlimited Entertainment on Android</h1>
+          <p class="hero-lead">
+            Movies & series with up-to-date subtitles • Live TV channels • PPV sports (UFC, F1, NFL, NHL, motor racing) • HD & FHD quality • Android phones & Android TVs
+          </p>
+          <a href="#pricing" class="btn btn-glow">Get Premium Access</a>
+        </div>
       </section>
 
       <h2 id="pricing" class="text-center display-5 fw-bold mb-5 mt-5">Choose Your Plan</h2>
@@ -421,7 +449,7 @@
       toggle.innerHTML = theme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
     });
 
-    // Slideshow – only behind heading
+    // Slideshow
     const slides = document.querySelectorAll('.hero-slides img');
     let idx = 0;
     setInterval(() => {
@@ -439,4 +467,4 @@
     });
   </script>
 </body>
-                </html>
+            </html>
