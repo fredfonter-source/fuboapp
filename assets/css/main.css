@@ -1,6 +1,5 @@
 /* ==========================================
    FuboStreams VIP Landing - Main CSS v31 (restored original look)
-   This is your provided original version — no changes, just cleaned formatting
 ========================================== */
 
 :root {
@@ -283,13 +282,13 @@ footer {
     font-size: 1.3rem;
     padding: 1.4rem 1.8rem !important;
   }
-  
+
   .payment-methods .method {
     width: 160px;
     padding: 2rem 1.2rem;
   }
-  
+
   .payment-methods .method img {
     height: 75px;
   }
-     }
+   }
