@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/download",
+      "dest": "/download.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1.html",
+      "status": 200
+    },
+    {
+      "handle": "filesystem"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
