@@ -14,78 +14,9 @@
   <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=36">
+  <link rel="stylesheet" href="/assets/css/main.css?v=37">
   <style>
     html { scroll-behavior: smooth; }
-
-    .download-hero {
-      position: relative;
-      padding: 8rem 1rem 6rem;
-      text-align: center;
-      overflow: hidden;
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .download-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,51,102,0.08) 0%, rgba(11,14,17,0.85) 100%);
-      z-index: -1;
-    }
-
-    .download-title {
-      font-size: clamp(3.5rem, 12vw, 6.5rem);
-      font-weight: 900;
-      background: linear-gradient(90deg, var(--accent), #ff6b8a);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 6px 20px rgba(0,0,0,0.7);
-    }
-
-    .download-subtitle {
-      font-size: clamp(1.4rem, 5vw, 2rem);
-      color: var(--text-secondary);
-      margin-bottom: 3rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .download-btn {
-      font-size: 1.4rem;
-      padding: 1.2rem 3.5rem;
-      border-radius: 3rem;
-      box-shadow: 0 12px 30px var(--accent-glow);
-    }
-
-    .download-btn:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px var(--accent-glow);
-    }
-
-    .steps-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-
-    .steps-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-glow);
-    }
-
-    .step-icon {
-      font-size: 3.5rem;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
   </style>
 </head>
 <body>
@@ -130,26 +61,28 @@
 
   <div class="container-fluid main-content">
     <div class="container">
-      <section class="download-hero">
-        <h1 class="download-title">Download FuboStreams</h1>
-        <p class="download-subtitle">The ultimate Android app for movies, series, live TV, and PPV sports in HD/FHD</p>
-        <a href="#" class="btn btn-danger download-btn">Download APK Now</a>
-        <p class="text-muted mt-4 small">Android phones & Android TVs only • Latest version • Safe & verified</p>
+      <section class="py-5 text-center">
+        <h1 class="display-4 fw-bold mb-4" style="background: linear-gradient(90deg, #ff3366, #ff4d7a); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+          Download FuboStreams
+        </h1>
+        <p class="lead mb-5">The ultimate Android app for movies, series, live TV, and PPV sports in HD/FHD</p>
+        <a href="#" class="btn btn-danger btn-lg px-5 py-3">Download APK Now</a>
+        <p class="text-muted mt-4">Android phones & Android TVs only • Latest version • Safe & verified</p>
       </section>
 
       <section class="py-5">
         <div class="row justify-content-center">
           <div class="col-lg-8">
-            <div class="steps-card text-center">
-              <i class="fas fa-mobile-alt step-icon"></i>
+            <div class="card p-5 text-center">
+              <i class="fas fa-mobile-alt fa-5x mb-4" style="color: #ff3366;"></i>
               <h3 class="mb-4">How to Install</h3>
               <ol class="list-unstyled text-start mx-auto" style="max-width: 500px;">
                 <li class="mb-4"><strong>1.</strong> Click the "Download APK Now" button above</li>
-                <li class="mb-4"><strong>2.</strong> Allow installation from unknown sources in Android settings</li>
-                <li class="mb-4"><strong>3.</strong> Open the downloaded APK file and install</li>
-                <li class="mb-4"><strong>4.</strong> Launch the app and enjoy (premium via admin activation)</li>
+                <li class="mb-4"><strong>2.</strong> Enable "Install from unknown sources" in Android settings</li>
+                <li class="mb-4"><strong>3.</strong> Open the downloaded file and install</li>
+                <li class="mb-4"><strong>4.</strong> Launch the app and enjoy (premium activation via admin)</li>
               </ol>
-              <p class="text-secondary mt-4 small">Tip: Download only from this official page to avoid fakes.</p>
+              <p class="text-secondary mt-4 small">Always download from official sources to avoid fake versions.</p>
             </div>
           </div>
         </div>
